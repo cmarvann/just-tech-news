@@ -43,3 +43,5 @@ User.init(
 );
 
 module.exports = User;
+
+// this file is responsible for creating the user data model
