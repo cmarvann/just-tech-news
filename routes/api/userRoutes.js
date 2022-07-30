@@ -21,7 +21,13 @@ router.get('/:id', (req, res) => {
   attributes: { exclude: ['password'] },
     where: {
      id: req.params.id
-    }
+    },
+    include: [
+      {
+        model: User,
+        attributes: ['username']
+      }
+    ]
   })
     .then(dbUserData => {
       if (!dbUserData) {
@@ -36,21 +42,21 @@ router.get('/:id', (req, res) => {
   }); 
 });
 
-// // POST /api/users
-// router.post('/', (req, res) => {
-//   // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
-//   User.create({
-//     username: req.body.username,
-//     email: req.body.email,
-//     password: req.body.password
-//   })
-//     .then(dbUserData => res.json(dbUserData))
-//     .catch(err => {
-//       console.log(err);
-//       res.status(500).json(err);
+// POST /api/users
+router.post('/', (req, res) => {
+  // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
+  User.create({
+    username: req.body.username,
+    email: req.body.email,
+    password: req.body.password
+  })
+    .then(dbUserData => res.json(dbUserData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
 
-//     });
-// });
+    });
+});
 
 router.post('/login', (req, res) => {
   // Query operation
