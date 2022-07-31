@@ -3,6 +3,7 @@ const sequelize = require('../config/connection');
 
 //Define the Post model 
 // initialize the Post model
+
 // create our Post model
 class Post extends Model {
 // columns, config naming, pass connection instance to initialize the Post model
