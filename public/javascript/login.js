@@ -41,7 +41,8 @@ async function loginFormHandler(event) {
       });
   
       if (response.ok) {
-        document.location.replace('/');
+        // automatically redirect users to dashboard after successful login
+        document.location.replace('/dashboard');
       } else {
         alert(response.statusText);
       }
@@ -51,3 +52,5 @@ async function loginFormHandler(event) {
   document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
   
   document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
+
+  // front end file 
