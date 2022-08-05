@@ -4,7 +4,6 @@ const { User, Post, Vote, Comment } = require('../../models');
 // GET /api/users - get all users
 router.get('/', (req, res) => {
  // Access our User model and run .findAll() method)
-
  User.findAll({
  attributes: { exclude: ['password'] }
 })
@@ -82,7 +81,6 @@ router.post('/', (req, res) => {
 
 router.post('/login', (req, res) => {
   // Query operation
-
   // expects {email: 'lernantino@gmail.com', password: 'password1234'}
   User.findOne({
     where: {
@@ -94,8 +92,6 @@ router.post('/login', (req, res) => {
       res.status(400).json({ message: 'No user with that email address!' });
       return;
     }
-
-    // res.json({ user: dbUserData });
 
     // Verify user
     const validPassword = dbUserData.checkPassword(req.body.password);
@@ -130,7 +126,6 @@ router.post('/logout', (req, res) => {
 // PUT /api/users/1
 router.put('/:id', (req, res) => {
     // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
-  
     // if req.body has exact key/value pairs to match the model, you can just use `req.body` instead
      // pass in req.body instead to only update what's passed through
   User.update(req.body, {
